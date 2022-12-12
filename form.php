@@ -1,4 +1,4 @@
-<form>
+<form method="post" action="/">
   <label for="firstname">First Name:</label>
   <input type="text" id="firstname" name="firstname" required>
   <br>
@@ -20,3 +20,21 @@
   <br>
   <input type="submit" value="Submit">
 </form>
+
+<?php
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $relationship = $_POST['relationship'];
+  $data = array(
+    'firstname' => $firstname,
+    'lastname' => $lastname,
+    'email' => $email,
+    'phone' => $phone,
+    'relationship' => $relationship
+  );
+  $file = fopen('data.json', 'w');
+  fwrite($file, json_encode($data));
+  fclose($file);
+?>
