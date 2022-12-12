@@ -1,40 +1,31 @@
-<form method="post" action="/">
-  <label for="firstname">First Name:</label>
-  <input type="text" id="firstname" name="firstname" required>
-  <br>
-  <label for="lastname">Last Name:</label>
-  <input type="text" id="lastname" name="lastname" required>
-  <br>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
-  <br>
-  <label for="phone">Phone Number:</label>
-  <input type="tel" id="phone" name="phone" required>
-  <br>
-  <label for="relationship">Relationship:</label>
+<form method="post">
+  <label for="first-name">First Name:</label><br>
+  <input type="text" id="first-name" name="first-name"><br>
+  <label for="last-name">Last Name:</label><br>
+  <input type="text" id="last-name" name="last-name"><br>
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email"><br>
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone"><br>
+  <label for="relationship">Relationship:</label><br>
   <select id="relationship" name="relationship">
-    <option value="friend">Friend</option>
     <option value="family">Family</option>
     <option value="coworker">Coworker</option>
+    <option value="friend">Friend</option>
   </select>
-  <br>
+  <br><br>
   <input type="submit" value="Submit">
 </form>
 
 <?php
-  $firstname = $_POST['firstname'];
-  $lastname = $_POST['lastname'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $relationship = $_POST['relationship'];
-  $data = array(
-    'firstname' => $firstname,
-    'lastname' => $lastname,
-    'email' => $email,
-    'phone' => $phone,
-    'relationship' => $relationship
-  );
-  $file = fopen('data.json', 'w');
-  fwrite($file, json_encode($data));
-  fclose($file);
+
+// get the data from the form
+$data = $_POST;
+
+// encode the data as JSON
+$json = json_encode($data);
+
+// write the JSON data to a file
+file_put_contents('data.json', $json);
+
 ?>
