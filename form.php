@@ -22,10 +22,20 @@
 // get the data from the form
 $data = $_POST;
 
-// encode the data as JSON
-$json = json_encode($data);
+// read the existing JSON data from the file
+$jsonData = file_get_contents('data.json');
 
-// write the JSON data to a file
+// decode the JSON data into an array
+$arrayData = json_decode($jsonData, true);
+
+// add the new data to the array
+$arrayData[] = $data;
+
+// encode the updated array as JSON
+$json = json_encode($arrayData);
+
+// write the JSON data to the file
 file_put_contents('data.json', $json);
 
 ?>
+
