@@ -36,6 +36,11 @@
         <!-- Page content-->
         <div class="container">
             <div class="text-center mt-5">
+  
+              <h1>Relationship Form</h1>
+              <h6>Fill out this form to submit your information to our database.</h6>
+
+              
                 <form method="post">
   <label for="first-name">First Name:</label><br>
   <input type="text" id="first-name" name="first-name"><br>
