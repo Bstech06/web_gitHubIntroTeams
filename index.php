@@ -58,7 +58,24 @@
   </select>
   <br><br>
   <input type="submit" value="Submit">
-</form>
+</form> 
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $firstName = $_POST['first-name'];
+  $lastName = $_POST['last-name'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $relationship = $_POST['relationship'];
+
+  echo "<hr><h1>Your Submitted Data</h1><h6>This is the data from the from you last submitted.</h6>First Name: " . $firstName . "<br>";
+  echo "Last Name: " . $lastName . "<br>";
+  echo "Email: " . $email . "<br>";
+  echo "Phone Number: " . $phone . "<br>";
+  echo "Relationship: " . $relationship . "<br>";
+}
+?>
+
 
 <?php
 
