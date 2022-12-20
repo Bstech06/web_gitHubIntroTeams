@@ -41,7 +41,7 @@
               <h6>Fill out this form to submit your information to our database.</h6>
 
               
-                <form method="post">
+                <form method="post" action="/redirect.php">
                   <label for="first-name">First Name:</label><br>
                   <input type="text" id="first-name" name="first-name"><br>
                   <label for="last-name">Last Name:</label><br>
