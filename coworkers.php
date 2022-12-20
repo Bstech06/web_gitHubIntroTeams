@@ -36,7 +36,9 @@
         <!-- Page content-->
         <div class="container">
             <div class="text-center mt-5">
-                <?php
+            <h1>Co-Worker Information</h1>                
+
+<?php
 
 // Read the contents of the data.json file into a string
 $json_data = file_get_contents('data.json');
