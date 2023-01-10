@@ -78,30 +78,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 <?php
-
-// get the data from the form
-$data = $_POST;
-
-// read the existing JSON data from the file
-$jsonData = file_get_contents('data.json');
-
-// decode the JSON data into an array
-$arrayData = json_decode($jsonData, true);
-
-// add the new data to the array
-$arrayData[] = $data;
-
-// encode the updated array as JSON
-$json = json_encode($arrayData);
-
-// write the JSON data to the file
-file_put_contents('data.json', $json);
-
+$data = file_get_contents($_SERVER['DOCUMENT_ROOT']."/data.json");      
+  $data =  json_decode($data, TRUE);
 ?>
 
 
             </div>
         </div>
+      <?php
+$data = json_decode(file_get_contents('data.json'), true);
+$relationships = array();
+foreach ($data as $key => $value) {
+    if (!isset($relationships[$value['relationship']])) {
+        $relationships[$value['relationship']] = array();
+    }
+    array_push($relationships[$value['relationship']], $value);
+}
+foreach ($relationships as $key => $values) {
+    echo '<div class="row">';
+    echo '<h3>' . $key . '</h3>';
+    foreach ($values as $val) {
+        echo '<div class="card text-center centered-card" style="width: 18rem;">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">' . $val['fName'] . ' ' . $val['lName'] . '</h5>';
+        echo '<p class="card-text">' . $val['email'] . '<br>' . $val['phone'] . '</p>';
+        echo '<a href="#" class="btn btn-primary">' . $val['relationship'] . '</a>';
+        echo '<h5 class="card-title">'.$val['uid'].'</h5>';
+        echo '</div>';
+        echo '</div>';
+    }
+    echo '</div>';
+}
+?>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
