@@ -49,14 +49,14 @@ $data = json_decode($json_data, true);
 
 // Use the array_filter function to extract the items with a "relationship" property of "family"
 $friend_data = array_filter($data, function ($item) {
-    return isset($item['relationship']) && $item['relationship'] == "friend";
+    return isset($item['relationship']) && $item['relationship'] == "friends";
 });
 
 // Use the extracted data to populate the content on the page
 foreach ($friend_data as $item) {
-    echo "Name: " . $item['first-name'] . " " . $item['last-name'] . "<br>";
+    echo "Name: " . $item['first_name'] . " " . $item['last_name'] . "<br>";
     echo "Email: " . $item['email'] . "<br>";
-    echo "Phone: " . $item['phone'] . "<br>";
+    echo "Phone: " . $item['phone_number'] . "<br>";
     echo "Relationship: " . $item['relationship'] . "<br><br>";
 }
 

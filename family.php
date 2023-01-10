@@ -54,9 +54,9 @@ $family_data = array_filter($data, function ($item) {
 
 // Use the extracted data to populate the content on the page
 foreach ($family_data as $item) {
-    echo "Name: " . $item['first-name'] . " " . $item['last-name'] . "<br>";
+    echo "Name: " . $item['first_name'] . " " . $item['last_name'] . "<br>";
     echo "Email: " . $item['email'] . "<br>";
-    echo "Phone: " . $item['phone'] . "<br>";
+    echo "Phone: " . $item['phone_number'] . "<br>";
     echo "Relationship: " . $item['relationship'] . "<br><br>";
 }
 

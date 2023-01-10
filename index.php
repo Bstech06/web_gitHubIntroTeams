@@ -40,64 +40,25 @@
               <h1>Relationship Form</h1>
               <h6>Fill out this form to submit your information to our database.</h6>
 
-              
-                <form method="post" action="/redirect.php">
-                  <label for="first-name">First Name:</label><br>
-                  <input type="text" id="first-name" name="first-name"><br>
-                  <label for="last-name">Last Name:</label><br>
-                  <input type="text" id="last-name" name="last-name"><br>
-                  <label for="email">Email:</label><br>
-                  <input type="email" id="email" name="email"><br>
-                  <label for="phone">Phone Number:</label><br>
-                  <input type="tel" id="phone" name="phone"><br>
-                  <label for="relationship">Relationship:</label><br>
-                  <select id="relationship" name="relationship">
-                    <option value="family">Family</option>
-                    <option value="coworker">Coworker</option>
-                    <option value="friend">Friend</option>
-                  </select>
-                  <br><br>
-                  <input type="submit" value="Submit">
-</form> 
+              <form action="redirect.php" method="POST">
+                <label for="first_name">First Name:</label><br>
+                <input type="text" id="first_name" name="first_name"><br>
+                <label for="last_name">Last Name:</label><br>
+                <input type="text" id="last_name" name="last_name"><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"><br>
+                <label for="phone_number">Phone Number:</label><br>
+                <input type="tel" id="phone_number" name="phone_number"><br>
+                <label for="relationship">Relationship:</label><br>
+                <select id="relationship" name="relationship">
+                  <option value="family">Family</option>
+                  <option value="friends">Friends</option>
+                  <option value="coworker">Coworker</option>
+                </select><br><br>
+                <input type="submit" value="Submit">
+              </form> 
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $firstName = $_POST['first-name'];
-  $lastName = $_POST['last-name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $relationship = $_POST['relationship'];
-
-  echo "<hr><h1>Your Submitted Data</h1><h6>This is the data from the from you last submitted.</h6>First Name: " . $firstName . "<br>";
-  echo "Last Name: " . $lastName . "<br>";
-  echo "Email: " . $email . "<br>";
-  echo "Phone Number: " . $phone . "<br>";
-  echo "Relationship: " . $relationship . "<br>";
-}
-?>
-
-
-<?php
-
-// get the data from the form
-$data = $_POST;
-
-// read the existing JSON data from the file
-$jsonData = file_get_contents('data.json');
-
-// decode the JSON data into an array
-$arrayData = json_decode($jsonData, true);
-
-// add the new data to the array
-$arrayData[] = $data;
-
-// encode the updated array as JSON
-$json = json_encode($arrayData);
-
-// write the JSON data to the file
-file_put_contents('data.json', $json);
-
-?>
+                
 
 
             </div>
