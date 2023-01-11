@@ -58,7 +58,7 @@
                   </select>
                   <br><br>
                   <input type="submit" value="Submit">
-</form> 
+                </form> 
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php
 $data = file_get_contents($_SERVER['DOCUMENT_ROOT']."/data.json");      
-  $data =  json_decode($data, TRUE);
+  $data =  json_decode($data, TRUE, JSON_PRETTY_PRINT);
 ?>
 
 
@@ -98,12 +98,12 @@ foreach ($relationships as $key => $values) {
     echo '<div class="row">';
     echo '<h3>' . $key . '</h3>';
     foreach ($values as $val) {
-        echo '<div class="card text-center centered-card" style="width: 18rem;">';
+        echo '<div class="card text" style="width: 25rem;">';
         echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $val['fName'] . ' ' . $val['lName'] . '</h5>';
-        echo '<p class="card-text">' . $val['email'] . '<br>' . $val['phone'] . '</p>';
-        echo '<a href="#" class="btn btn-primary">' . $val['relationship'] . '</a>';
-        echo '<h5 class="card-title">'.$val['uid'].'</h5>';
+        echo '<h5 class="card-title">Full Name:' . $val['fName'] . ' ' . $val['lName'] . '</h5>';
+        echo '<h5 class="card-text">Relationship:' . $val['relationship'] . '</h5>';
+        echo '<h5 class="card-title">' . $val['email'] . '<br>' . $val['phone'] .'</h5>';
+        echo '<h5 class="card-title"> <a href="/edit.php">Edit Info</a></h5>';
         echo '</div>';
         echo '</div>';
     }

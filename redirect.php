@@ -9,5 +9,5 @@ $relationship = $_POST['relationship'];
 
 
 
-
+header('Location: /index.php'.$newURL);
 ?>
