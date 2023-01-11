@@ -103,7 +103,7 @@ foreach ($relationships as $key => $values) {
         echo '<h5 class="card-title">Full Name:' . $val['fName'] . ' ' . $val['lName'] . '</h5>';
         echo '<h5 class="card-text">Relationship:' . $val['relationship'] . '</h5>';
         echo '<h5 class="card-title">' . $val['email'] . '<br>' . $val['phone'] .'</h5>';
-        echo '<h5 class="card-title"> <a href="/edit.php">Edit Info</a></h5>';
+        echo '<h5 class="card-title"> <a href="/edit.php?uid=' . $val['uid'] . '">Edit Info</a></h5>';
         echo '</div>';
         echo '</div>';
     }

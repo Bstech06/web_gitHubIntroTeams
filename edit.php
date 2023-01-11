@@ -1,4 +1,20 @@
-<?php include $_SERVER['DOCUMENT_ROOT'].'/functions.php';?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/functions.php';
+
+
+$jsonData = file_get_contents($_SERVER['DOCUMENT_ROOT']."/data.json");      
+  $existingData =  json_decode($jsonData, TRUE);
+foreach($existingData as $key => $value) {
+  if($value['uid'] == $_GET['uid']){
+    $editUID = $value['uid'];
+    $editFname = $value['fName'];
+    $editLname = $value['lName'];
+    $editEmail = $value['email'];
+    $editPhone = $value['phone'];
+    $editRelationship = $value['relationship'];
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -42,15 +58,15 @@
               
                 <form method="post" action="/redirect.php">
                   <label for="first-name">First Name:</label><br>
-                  <input type="text" id="first-name" name="first-name"><br>
+                  <input type="text" id="first-name" name="first-name" value="<?php echo $editFname;?>"><br>
                   <label for="last-name">Last Name:</label><br>
-                  <input type="text" id="last-name" name="last-name"><br>
+                  <input type="text" id="last-name" name="last-name" value="<?php echo $editLname;?>" ><br>
                   <label for="email">Email:</label><br>
-                  <input type="email" id="email" name="email"><br>
+                  <input type="email" id="email" name="email" value="<?php echo $editEmail;?>"><br>
                   <label for="phone">Phone Number:</label><br>
-                  <input type="tel" id="phone" name="phone"><br>
+                  <input type="tel" id="phone" name="phone" value="<?php echo $editPhone;?>"><br>
                   <label for="relationship">Relationship:</label><br>
-                  <select id="relationship" name="relationship">
+                  <select id="relationship" name="relationship" value="<?php echo $editRelationship;?>">
                     <option value="family">Family</option>
                     <option value="coworker">Coworker</option>
                     <option value="friend">Friend</option>
@@ -59,7 +75,8 @@
                   <input type="submit" value="Submit">
                 </form>
 
-              
+              <?php echo $_GET['uid'];
+                ?>
             </div>
         </div>
         <!-- Bootstrap core JS-->
