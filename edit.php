@@ -66,13 +66,14 @@ foreach($existingData as $key => $value) {
                   <label for="phone">Phone Number:</label><br>
                   <input type="tel" id="phone" name="phone" value="<?php echo $editPhone;?>"><br>
                   <label for="relationship">Relationship:</label><br>
-                  <select id="relationship" name="relationship" value="<?php echo $editRelationship;?>">
+                  <select id="relationship" name="relationship">
                     <option value="family">Family</option>
                     <option value="coworker">Coworker</option>
                     <option value="friend">Friend</option>
                   </select>
                   <br><br>
-                  <input type="submit" value="Submit">
+                  <input type="hidden" id="uid" value="<?php echo $editUID;?>"><br>
+                  <input type="submit" value="Save Changes" name="BTN_edit">
                 </form>
 
               <?php echo $_GET['uid'];

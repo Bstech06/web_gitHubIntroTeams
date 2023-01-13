@@ -57,7 +57,7 @@
                     <option value="friend">Friend</option>
                   </select>
                   <br><br>
-                  <input type="submit" value="Submit">
+                  <input type="submit" value="Create" name="BTN_create">
                 </form> 
 
 <?php
@@ -73,15 +73,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   echo "Email: " . $email . "<br>";
   echo "Phone Number: " . $phone . "<br>";
   echo "Relationship: " . $relationship . "<br>";
+
+// Read the data.json file
+$data = json_decode(file_get_contents('data.json'), true);
+
+// Create an array with the form data
+$newFormData = array(
+  "fName" => $firstName,
+  "lName" => $lastName,
+  "email" => $email,
+  "phone" => $phone,
+  "relationship" => $relationship
+);
+
+// Add the form data to the data.json file
+$data[] = $newFormData;
+
+// Write the updated data back to the data.json file
+file_put_contents('data.json', json_encode($data));
+
 }
 ?>
-
-
-<?php
-$data = file_get_contents($_SERVER['DOCUMENT_ROOT']."/data.json");      
-  $data =  json_decode($data, TRUE, JSON_PRETTY_PRINT);
-?>
-
 
             </div>
         </div>
