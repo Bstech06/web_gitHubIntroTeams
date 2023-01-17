@@ -3,10 +3,10 @@ $jsonData = file_get_contents($_SERVER['DOCUMENT_ROOT']."/data.json");
   $existingData =  json_decode($jsonData, TRUE);
 
  if(isset($_POST["BTN_create"])){
-  echo "Add new contract";
+  // echo "Add new contract";
   $buisnessProcess = "create";
 } else if (isset($_POST["BTN_edit"])) {
-  echo "Edit contact";
+  // echo "Edit contact";
    $buisnessProcess = "edit";
 }
 
@@ -26,26 +26,22 @@ if($buisnessProcess == "create"){
     }
 
 
-$newFormData = array(
-  "fName" => $firstName,
-  "lName" => $lastName,
-  "email" => $email,
-  "phone" => $phone,
-  "relationship" => $relationship
-);
+// $newFormData = array(
+//   "fName" => $firstName,
+//   "lName" => $lastName,
+//   "email" => $email,
+//   "phone" => $phone,
+//   "relationship" => $relationship
+// );
 
 }else if ($buisnssProcess == "edit"){
   foreach($existingData as $item){
-      if($item['uid'] == $_POST['uid']){
-        $newFormData = array(
-        "fName" => $firstName,
-        "lName" => $lastName,
-        "email" => $email,
-        "phone" => $phone,
-        "relationship" => $relationship,
-        "uid" => $_POST['uid']
-      );
-    }
+      foreach ($data as $key => $item){
+  if($item['uid'] == $_GET['uid']){
+    echo $item['fName'];
+    $data[$key]['fName'] = $firstName;
+  }
+}
   }
 }
 
