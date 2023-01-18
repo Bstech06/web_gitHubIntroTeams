@@ -56,7 +56,7 @@ foreach($existingData as $key => $value) {
               <h1>Edit Form</h1>
               <h6>Fill out this form to change a certain persons data</h6>
               
-                <form method="post" action="/redirect.php">
+                <form method="post" action="/redirectEdit.php">
                   <label for="first-name">First Name:</label><br>
                   <input type="text" id="first-name" name="first-name" value="<?php echo $editFname;?>"><br>
                   <label for="last-name">Last Name:</label><br>
